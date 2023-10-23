@@ -8,11 +8,14 @@ export default async function Index() {
    */
   return (
     <div className={styles.page}>
+      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+        Data to enrich your online business
+      </h1>
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
             <h1>
-              <span> Hello there, </span>
+              <span className="bg-red-500"> Hello there, </span>
               Welcome next-portfolio 👋
             </h1>
           </div>
