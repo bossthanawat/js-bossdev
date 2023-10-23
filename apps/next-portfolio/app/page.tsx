@@ -1,5 +1,5 @@
 import styles from './page.module.scss';
-
+import { Welcome } from '@js-bossdev/components';
 export default async function Index() {
   /*
    * Replace the elements below with your own.
@@ -8,9 +8,7 @@ export default async function Index() {
    */
   return (
     <div className={styles.page}>
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-        Data to enrich your online business
-      </h1>
+      <Welcome />
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
