@@ -10,10 +10,10 @@ const buttonVariants = cva(
         outlined: "",
         contained: "",
       },
-      color: {
-        primary: "",
-        secondary: "",
-      },
+      // color: {
+      //   primary: "",
+      //   secondary: "",
+      // },
     },
     defaultVariants: {
       variant: "contained",
@@ -21,7 +21,7 @@ const buttonVariants = cva(
     compoundVariants: [
       {
         variant: "contained",
-        color: "primary",
+        // color: "primary",
         className:
           "bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-50 dark:text-slate-900",
       },
@@ -35,7 +35,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, color, variant, ...props }, ref) => {
     return (
       <button
-        className={cn(buttonVariants({ color, variant, className }))}
+        className={cn(buttonVariants({
+          // color,
+          variant, className
+        }))}
         ref={ref}
         {...props}
       />
