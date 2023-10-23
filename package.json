@@ -1,8 +1,10 @@
 {
   "name": "@js-bossdev/source",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start-portfolio": "nx serve next-portfolio"
+  },
   "private": true,
   "dependencies": {
     "@nx/next": "17.0.1",
