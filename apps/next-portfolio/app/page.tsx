@@ -1,5 +1,5 @@
 import styles from './page.module.scss';
-import { Welcome } from '@js-bossdev/components';
+import { Button, Welcome } from '@js-bossdev/components';
 export default async function Index() {
   /*
    * Replace the elements below with your own.
@@ -16,6 +16,7 @@ export default async function Index() {
               <span className="bg-red-500"> Hello there, </span>
               Welcome next-portfolio 👋
             </h1>
+            <Button>Button!</Button>
           </div>
 
           <div id="hero" className="rounded">

@@ -1,6 +1,12 @@
-const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
-const { join } = require('path');
-const colors = require('tailwindcss/colors')
+const {
+  createGlobPatternsForDependencies
+} = require('@nx/react/tailwind');
+const {
+  join
+} = require('path');
+const colors = require('tailwindcss/colors');
+const { listTintVariantColor } = require('./src/utils');
+
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,15 +18,10 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    // colors: {
-    //   primary: colors.blue[400],
-    //   secondary: '#ecc94b',
-    //   ...colors
-    // },
     extend: {
       colors: {
-        primary: colors.blue[400],
-        secondary: '#ecc94b',
+        'primary': listTintVariantColor('var(--color-primary-base)'),
+        secondary: colors.lime,
       }
     },
   },
