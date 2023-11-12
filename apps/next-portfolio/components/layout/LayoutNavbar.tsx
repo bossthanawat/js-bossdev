@@ -4,7 +4,7 @@ const LayoutNavbar = () => {
   return (
     <>
       <div className="sticky top-0 bg-white/40 backdrop-blur-sm">
-        <div className="container mx-auto flex justify-between items-center px-4 py-4">
+        <div className="container flex justify-between items-center py-4">
           <Link className="font-bold text-lg" href={'/'}>
             THANAWAT.K
           </Link>
