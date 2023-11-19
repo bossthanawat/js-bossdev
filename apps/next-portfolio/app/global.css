@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 334 78% 98%;
+    --background: 0 0% 98%;
     --foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -75,6 +75,7 @@
     @apply border-border;
   }
   body {
+    scroll-behavior: smooth;
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }

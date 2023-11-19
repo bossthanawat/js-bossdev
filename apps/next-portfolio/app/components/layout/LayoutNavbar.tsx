@@ -9,11 +9,11 @@ const LayoutNavbar = () => {
             THANAWAT.K
           </Link>
           <div className="flex gap-6">
-            <LinkTypography href="/">About</LinkTypography>
-            <LinkTypography href="https://medium.com/@boss41680">
+            <LinkTypography href="#about">About</LinkTypography>
+            <LinkTypography href="https://medium.com/@boss41680" newTab>
               Blog
             </LinkTypography>
-            <LinkTypography href="https://github.com/bossthanawat">
+            <LinkTypography href="https://github.com/bossthanawat" newTab>
               Git
             </LinkTypography>
             <LinkTypography href="/">Contact</LinkTypography>
@@ -28,12 +28,19 @@ export default LayoutNavbar;
 
 const LinkTypography = ({
   href,
+  newTab,
   children,
 }: {
+  newTab?: boolean;
   children: React.ReactNode;
 } & LinkProps) => {
   return (
-    <Link className="font-medium hover:opacity-70" href={href}>
+    <Link
+      className="font-medium hover:opacity-70"
+      href={href}
+      rel={newTab ? 'noopener noreferrer' : undefined}
+      target={newTab ? '_blank' : undefined}
+    >
       {children}
     </Link>
   );

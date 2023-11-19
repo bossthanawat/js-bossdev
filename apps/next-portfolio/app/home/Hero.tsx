@@ -4,7 +4,6 @@ const Hero = () => {
 
   return (
     <>
-
       <div className="container">
         <h2 className="pt-12 text-2xl font-medium lg:text-4xl">
           Hi I&apos;m

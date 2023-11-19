@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
-import { LayoutNavbar } from '../components/layout';
+import { LayoutNavbar } from './components/layout';
+
+
 
 type MainLayoutProps = {
   children?: ReactNode;
@@ -10,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     <div>
       <LayoutNavbar />
       {children}
-      <div className="pt-4" />
+      <div className="pt-32" />
     </div>
   );
 };
