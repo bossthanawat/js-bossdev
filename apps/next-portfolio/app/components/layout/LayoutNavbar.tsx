@@ -1,4 +1,5 @@
 import Link, { LinkProps } from 'next/link';
+import { PAGE_PATH } from '../../lib/constants';
 
 const LayoutNavbar = () => {
   return (
@@ -9,14 +10,14 @@ const LayoutNavbar = () => {
             THANAWAT.K
           </Link>
           <div className="flex gap-6">
-            <LinkTypography href="#about">About</LinkTypography>
-            <LinkTypography href="https://medium.com/@boss41680" newTab>
+            <LinkTypography href={PAGE_PATH.ABOUT}>About</LinkTypography>
+            <LinkTypography href={PAGE_PATH.OUT_PATH.BLOG_MEDIUM} newTab>
               Blog
             </LinkTypography>
-            <LinkTypography href="https://github.com/bossthanawat" newTab>
+            <LinkTypography href={PAGE_PATH.OUT_PATH.GITHUB} newTab>
               Git
             </LinkTypography>
-            <LinkTypography href="/">Contact</LinkTypography>
+            <LinkTypography href={PAGE_PATH.CONTACT}>Contact</LinkTypography>
           </div>
         </div>
       </div>
