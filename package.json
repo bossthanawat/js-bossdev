@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start-portfolio": "nx serve next-portfolio",
+    "build-portfolio": "nx build next-portfolio --prod",
     "storybook-components": "nx storybook components"
   },
   "private": true,

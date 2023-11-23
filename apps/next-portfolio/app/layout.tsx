@@ -8,7 +8,7 @@ export const metadata = {
   description: 'helloworld',
 };
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 })
