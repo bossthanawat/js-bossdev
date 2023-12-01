@@ -1,0 +1,43 @@
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@js-bossdev/components';
+
+const Hero = () => {
+  return (
+    <div className="relative isolate h-[calc(100vh-60px)] max-h-[600px]">
+      <div className="container h-full py-4">
+        <div className="flex items-center h-full">
+          <div className="text-start">
+            <h2 className="text-2xl font-medium lg:text-4xl">
+              Hi I&apos;m
+            </h2>
+            <FullName />
+            <p className="mt-1 text-lg font-normal text-gray-500">
+              &lt;Software Engineer &bull; Front-End Developer&gt;
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hero;
+
+const FullName = () => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <h1 className="text-4xl font-bold lg:text-5xl">Boss Thanawat</h1>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Thanawat Kittichaikarn</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
