@@ -1,7 +1,6 @@
 const About = () => {
   return (
     <>
-      <div id="about" />
       <div className="container pt-8">
         <div className="text-xl font-bold">About Me</div>
         <div className="mt-4">
@@ -10,9 +9,7 @@ const About = () => {
         <div className="max-w-xl">
           Experienced front-end developer and software engineer with a focus on
           creating accessible web products. Proficient in React and dedicated to
-          crafting visually appealing and user-friendly interfaces. Adept at
-          merging technical expertise with a passion for aesthetics and
-          photography.
+          crafting visually appealing and user-friendly interfaces.
         </div>
         <div className="mt-2 mb-1 font-medium">Skill:</div>
         <li>Front-End Development: React, Next.js</li>

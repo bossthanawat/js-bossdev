@@ -1,6 +1,6 @@
 export const PAGE_PATH = {
   HOME: '/',
-  ABOUT: '/#about',
+  ABOUT: '/about',
   CONTACT: '/contact',
   OUT_PATH: {
     BLOG_MEDIUM: 'https://medium.com/@boss41680',
