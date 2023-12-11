@@ -1,7 +1,8 @@
-
 import { cn } from '@js-bossdev/components';
 import './global.css';
-import { Inter as FontSans } from "next/font/google"
+import { Inter as FontSans } from 'next/font/google';
+// import Client from './client';
+// import Client from './about/client';
 
 export const metadata = {
   title: 'bossthanawat | Home',
@@ -9,9 +10,9 @@ export const metadata = {
 };
 
 const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
 
 export default function RootLayout({
   children,
@@ -20,10 +21,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(
-        "min-h-screen bg-background font-sans antialiased text-slate-900",
-        fontSans.variable
-      )}>{children}</body>
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased text-slate-900',
+          fontSans.variable
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }
