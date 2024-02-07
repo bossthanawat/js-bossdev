@@ -1,6 +1,7 @@
 import { cn } from '@js-bossdev/components';
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
+import { LayoutNavbar } from './components/layout';
 // import Client from './client';
 // import Client from './about/client';
 
@@ -27,6 +28,15 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        <LayoutNavbar />
+        {/* <div
+          style={{
+            background:
+              'radial-gradient(circle at top center,rgba(211, 224, 255, 0.5) 0,transparent 50%,transparent 100%)',
+          }}
+          className="absolute inset-0 -z-50 max-h-screen"
+        /> */}
+
         {children}
       </body>
     </html>

@@ -8,7 +8,7 @@ type MainLayoutProps = {
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div>
-      <LayoutNavbar />
+      {/* <LayoutNavbar /> */}
       {children}
       <div className="pt-32" />
     </div>
