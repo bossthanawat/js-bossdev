@@ -1,48 +1,110 @@
 'use client';
 import Link, { LinkProps } from 'next/link';
 import { PAGE_PATH } from '../../lib/constants';
-import { motion } from 'framer-motion';
+import {} from 'framer-motion';
 import { cn } from '@js-bossdev/components';
 import { ClassValue } from 'clsx';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+
+const navConfig = [
+  {
+    label: 'About',
+    href: PAGE_PATH.ABOUT,
+  },
+  {
+    label: 'Blog',
+    href: PAGE_PATH.OUT_PATH.BLOG_MEDIUM,
+    newTab: true,
+  },
+];
 
 const LayoutNavbar = () => {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
   return (
     <>
       <div className="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4">
         <nav aria-label="Main navigation">
-          <div className="flex flex-col justify-between rounded-b-lg px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl bg-white/80 backdrop-blur-sm drop-shadow-sm border-2">
+          <div className="flex flex-row items-center justify-between rounded-b-lg px-4 py-2 md:m-4 md:items-center md:rounded-xl bg-white/80 backdrop-blur-sm drop-shadow-lg">
             <Link className="font-bold text-lg" href={'/'}>
               Thanawat.K
             </Link>
-            <div className="relative flex gap-3 items-center">
-              <LinkTypography href={PAGE_PATH.ABOUT}>About</LinkTypography>
-              <LinkTypography href={PAGE_PATH.OUT_PATH.BLOG_MEDIUM} newTab>
-                Blog
-              </LinkTypography>
-              <div className="rounded-md border-2 border-slate-900 hover:scale-105 ml-3">
+            {/* D */}
+            <div className="relative md:flex hidden gap-3 items-center ">
+              {navConfig.map((item, index) => (
                 <LinkTypography
-                  href={PAGE_PATH.CONTACT}
-                  styleHighlight="bg-yellow-300"
+                  key={index}
+                  href={item.href}
+                  isCurrentPath={pathname === item.href}
+                  newTab={item.newTab}
                 >
-                  <span className="relative flex items-center justify-center gap-2">
-                    Contact
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4z"
-                      />
-                    </svg>
-                  </span>
+                  {item.label}
                 </LinkTypography>
-              </div>
+              ))}
+              <ContactButton
+                className="ml-3"
+                isCurrentPath={pathname === PAGE_PATH.CONTACT}
+              />
             </div>
+            {/* M  */}
+            <button
+              aria-label="Open Menu"
+              className="block p-2 text-2xl text-slate-800 md:hidden"
+              onClick={() => setOpen(true)}
+            >
+              <IconHambuger />
+            </button>
           </div>
         </nav>
+      </div>
+      <div
+        className={cn(
+          'fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden',
+          open ? 'translate-x-0' : 'translate-x-[100%]'
+        )}
+      >
+        <button
+          aria-label="Close menu"
+          aria-expanded={open}
+          className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden "
+          onClick={() => setOpen(false)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"
+            />
+          </svg>
+        </button>
+        <Link
+          className="font-bold text-lg"
+          href={'/'}
+          onClick={() => setOpen(false)}
+        >
+          Thanawat.K
+        </Link>
+        {navConfig.map((item, index) => (
+          <LinkTypography
+            key={index}
+            href={item.href}
+            onClick={() => setOpen(false)}
+            isCurrentPath={pathname === item.href}
+            newTab={item.newTab}
+          >
+            {item.label}
+          </LinkTypography>
+        ))}
+        <ContactButton
+          onClick={() => setOpen(false)}
+          isCurrentPath={pathname === PAGE_PATH.CONTACT}
+        />
       </div>
     </>
   );
@@ -53,22 +115,25 @@ export default LayoutNavbar;
 type LinkTypographyProps = {
   newTab?: boolean;
   styleHighlight?: ClassValue;
+  isCurrentPath?: boolean;
   children: React.ReactNode;
 } & LinkProps;
 const LinkTypography = (props: LinkTypographyProps) => {
-  const { newTab, styleHighlight, children, href } = props;
+  const { newTab, styleHighlight, children, href, isCurrentPath } = props;
   return (
     <Link
-      className="font-medium group relative block overflow-hidden rounded px-3 py-1 text-base text-slate-900"
+      {...props}
+      className="font-bold md:font-medium text-lg md:text-base group relative block overflow-hidden rounded px-3 py-1 text-slate-900"
       href={href}
       rel={newTab ? 'noopener noreferrer' : undefined}
       target={newTab ? '_blank' : undefined}
     >
       <span
         className={cn(
-          'absolute inset-0 z-0 h-full rounded transition-transform duration-300 ease-in-out group-hover:translate-y-0 translate-y-8',
+          'absolute inset-0 z-0 h-full rounded transition-transform duration-300 ease-in-out group-hover:translate-y-0',
           'bg-primary',
-          styleHighlight
+          styleHighlight,
+          isCurrentPath ? 'translate-y-7' : 'translate-y-full'
         )}
       ></span>
       <div className="relative">{children}</div>
@@ -76,14 +141,64 @@ const LinkTypography = (props: LinkTypographyProps) => {
   );
 };
 
-{
-  /* <motion.div
-initial={{ opacity: 0, y: -60 }}
-animate={{ opacity: 1, y: 0 }}
-transition={{
-  duration: 0.6,
-  ease: [0.22, 1, 0.36, 1],
-}}
-viewport={{ once: true }}
-> */
-}
+type ContactButtonProps = {
+  className?: string;
+  isCurrentPath?: boolean;
+  onClick?: () => void;
+};
+const ContactButton: React.FC<ContactButtonProps> = ({
+  className,
+  isCurrentPath,
+  ...props
+}) => {
+  return (
+    <div
+      className={cn(
+        'rounded-md border-2 border-slate-900 hover:scale-105',
+        className
+      )}
+      {...props}
+    >
+      <LinkTypography
+        href={PAGE_PATH.CONTACT}
+        styleHighlight="bg-yellow-300"
+        isCurrentPath={isCurrentPath}
+      >
+        <span className="relative flex items-center justify-center gap-2">
+          Contact
+          <IconArrow />
+        </span>
+      </LinkTypography>
+    </div>
+  );
+};
+
+const IconHambuger = () => {
+  return (
+    <svg
+      stroke="currentColor"
+      fill="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      height="1em"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path fill="none" d="M0 0h24v24H0z"></path>
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+    </svg>
+  );
+};
+
+const IconArrow = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+    >
+      <path fill="currentColor" d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4z" />
+    </svg>
+  );
+};
