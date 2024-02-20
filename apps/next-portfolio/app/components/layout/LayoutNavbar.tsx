@@ -1,11 +1,11 @@
 'use client';
 import Link, { LinkProps } from 'next/link';
 import { PAGE_PATH } from '../../lib/constants';
-import {} from 'framer-motion';
 import { cn } from '@js-bossdev/components';
 import { ClassValue } from 'clsx';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import AnimatedLetters from '../animated/AnimatedLetters';
 
 const navConfig = [
   {
@@ -25,11 +25,17 @@ const LayoutNavbar = () => {
 
   return (
     <>
+      {/* <div className='absolute top-0 w-full h-full'> */}
       <div className="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4">
         <nav aria-label="Main navigation">
-          <div className="flex flex-row items-center justify-between rounded-b-lg px-4 py-2 md:m-4 md:items-center md:rounded-xl bg-white/80 backdrop-blur-sm drop-shadow-lg">
+          {/* [box-shadow:5px_5px_rgb(82_82_82)] */}
+          <div className="flex flex-row items-center justify-between rounded-b-lg px-4 py-2 md:m-4 md:items-center md:rounded-xl bg-white/90 backdrop-blur-sm drop-shadow-lg">
             <Link className="font-bold text-lg" href={'/'}>
-              Thanawat.K
+              <AnimatedLetters
+                title="boss_thanawat"
+                staggerChildren={0.05}
+                delayChildren={0}
+              />
             </Link>
             {/* D */}
             <div className="relative md:flex hidden gap-3 items-center ">
@@ -39,6 +45,7 @@ const LayoutNavbar = () => {
                   href={item.href}
                   isCurrentPath={pathname === item.href}
                   newTab={item.newTab}
+                  styleHighlight="bg-yellow-300"
                 >
                   {item.label}
                 </LinkTypography>
@@ -68,7 +75,7 @@ const LayoutNavbar = () => {
         <button
           aria-label="Close menu"
           aria-expanded={open}
-          className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden "
+          className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden"
           onClick={() => setOpen(false)}
         >
           <svg
@@ -88,7 +95,7 @@ const LayoutNavbar = () => {
           href={'/'}
           onClick={() => setOpen(false)}
         >
-          Thanawat.K
+          boss_thanawat
         </Link>
         {navConfig.map((item, index) => (
           <LinkTypography
@@ -97,6 +104,7 @@ const LayoutNavbar = () => {
             onClick={() => setOpen(false)}
             isCurrentPath={pathname === item.href}
             newTab={item.newTab}
+            styleHighlight="bg-yellow-300"
           >
             {item.label}
           </LinkTypography>
@@ -106,6 +114,7 @@ const LayoutNavbar = () => {
           isCurrentPath={pathname === PAGE_PATH.CONTACT}
         />
       </div>
+      {/* </div> */}
     </>
   );
 };
@@ -166,7 +175,18 @@ const ContactButton: React.FC<ContactButtonProps> = ({
       >
         <span className="relative flex items-center justify-center gap-2">
           Contact
-          <IconArrow />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+          >
+            <path
+              fill="currentColor"
+              d="M6.188 17.288L5.5 16.6L15.58 6.5H6.289v-1h11v11h-1V7.208z"
+            ></path>
+          </svg>
         </span>
       </LinkTypography>
     </div>
@@ -186,19 +206,6 @@ const IconHambuger = () => {
     >
       <path fill="none" d="M0 0h24v24H0z"></path>
       <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-    </svg>
-  );
-};
-
-const IconArrow = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1em"
-      height="1em"
-      viewBox="0 0 24 24"
-    >
-      <path fill="currentColor" d="M6.4 18L5 16.6L14.6 7H6V5h12v12h-2V8.4z" />
     </svg>
   );
 };
