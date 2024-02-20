@@ -2,8 +2,12 @@ import { cn } from '@js-bossdev/components';
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
 import { LayoutNavbar } from './components/layout';
+import { ReactQueryClientProvider } from './components/ReactQueryClientProvider';
 // import Client from './client';
 // import Client from './about/client';
+
+// scroll bar
+import 'simplebar-react/dist/simplebar.min.css';
 
 export const metadata = {
   title: 'bossthanawat | Home',
@@ -21,15 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          'bg-background font-sans antialiased text-slate-900',
-          fontSans.variable
-        )}
-      >
-        <LayoutNavbar />
-        {/* <div
+    <ReactQueryClientProvider>
+      <html lang="en">
+        <body
+          className={cn(
+            'bg-background font-sans antialiased text-slate-900',
+            fontSans.variable
+          )}
+        >
+          <LayoutNavbar />
+          {/* <div
           style={{
             background:
               'radial-gradient(circle at top center,rgba(211, 224, 255, 0.5) 0,transparent 50%,transparent 100%)',
@@ -37,8 +42,9 @@ export default function RootLayout({
           className="absolute inset-0 -z-50 max-h-screen"
         /> */}
 
-        {children}
-      </body>
-    </html>
+          {children}
+        </body>
+      </html>
+    </ReactQueryClientProvider>
   );
 }
