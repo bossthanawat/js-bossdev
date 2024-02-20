@@ -163,7 +163,7 @@ const ContactButton: React.FC<ContactButtonProps> = ({
   return (
     <div
       className={cn(
-        'rounded-md border-2 border-slate-900 hover:scale-105',
+        'rounded-md border-2 border-slate-900 hover:scale-100',
         className
       )}
       {...props}

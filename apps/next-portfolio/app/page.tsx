@@ -1,5 +1,4 @@
-// import AnimatedLetters from './components/animated/AnimatedLetters';
-// import Chat from './components/sections/home/Chat';
+import Chat from './components/sections/home/Chat';
 import Expertise from './components/sections/home/Expertise';
 import Hero from './components/sections/home/Hero';
 
@@ -8,11 +7,10 @@ export default async function Index() {
     <>
       <Hero />
       <Expertise />
-      <div className="text-5xl font-bold px-4">
-        {/* <AnimatedLetters title="ABOUT" /> */}
+      <div className="container mt-20">
+        <h3 className="text-xl md:text-3xl font-medium">Mini Q&A</h3>
+        <Chat />
       </div>
-
-      {/* <Chat /> */}
     </>
   );
 }

@@ -1,18 +1,6 @@
 'use client';
-import {
-  Button,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@js-bossdev/components';
-import { PAGE_PATH } from '../../../lib/constants';
-import Link from 'next/link';
-import AnimatedLetters from '../../animated/AnimatedLetters';
 
 const Hero = () => {
-  // h-[calc(100vh-52px)]
-  // h-screen
   return (
     <>
       <div className="relative bg-slate-0 text-slate-900 mt-40">
