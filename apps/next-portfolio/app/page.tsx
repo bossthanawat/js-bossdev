@@ -9,7 +9,9 @@ export default async function Index() {
       <Expertise />
       <div className="container mt-20">
         <h3 className="text-xl md:text-3xl font-medium">Mini Q&A</h3>
-        <Chat />
+        <div className="mt-4 mx-auto w-full bg-white border [box-shadow:5px_5px_rgb(82_82_82)] rounded-lg overflow-hidden ">
+          <Chat />
+        </div>
       </div>
     </>
   );
