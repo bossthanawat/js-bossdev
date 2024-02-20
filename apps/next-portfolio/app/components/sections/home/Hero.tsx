@@ -11,28 +11,17 @@ import Link from 'next/link';
 import AnimatedLetters from '../../animated/AnimatedLetters';
 
 const Hero = () => {
+  // h-[calc(100vh-52px)]
+  // h-screen
   return (
     <>
-      <div className="relative isolate mt-20 lg:mt-40">
-        <div className="container h-full py-4">
-          <div className="flex items-center h-full">
-            <div className="text-start">
-              <h2 className="text-2xl font-medium lg:text-4xl">Hi I&apos;m</h2>
-              <FullName />
-              <p className="mt-1 text-lg font-normal text-gray-500">
-                &lt;Software Engineer &bull; Front-End Developer&gt;
-              </p>
-              <div className="max-w-xl mt-4">
-                Experienced front-end developer and software engineer with a
-                focus on creating accessible web products.
-              </div>
-              <div className="mt-4">
-                <Link
-                  className="cursor-pointer"
-                  href={PAGE_PATH.ABOUT}
-                >{`About ->`}</Link>
-              </div>
-            </div>
+      <div className="relative bg-slate-0 text-slate-900 mt-40">
+        <div className="flex items-center justify-center h-full">
+          <div className="flex flex-col text-center items-center container">
+            <h1 className="text-[10vw] md:text-[5vw] font-bold">THANAWAT.K</h1>
+            <h2 className="text-xs md:text-lg">
+              SOFTWARE ENGINEER, FRONT END & MINI BACK END.
+            </h2>
           </div>
         </div>
       </div>
@@ -41,21 +30,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-const FullName = () => {
-  return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <h1 className="text-4xl font-bold lg:text-5xl">
-            Boss Thanawat
-            {/* <AnimatedLetters title="Boss Thanawat" staggerChildren={0.05} delayChildren={0}/> */}
-          </h1>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Thanawat Kittichaikarn</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-  );
-};
