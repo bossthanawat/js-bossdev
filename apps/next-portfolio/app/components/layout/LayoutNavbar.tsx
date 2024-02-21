@@ -26,7 +26,7 @@ const LayoutNavbar = () => {
   return (
     <>
       {/* <div className='absolute top-0 w-full h-full'> */}
-      <div className="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4">
+      <div className="top-0 z-50 mx-auto container p-0 md:sticky md:top-4">
         <nav aria-label="Main navigation">
           {/* [box-shadow:5px_5px_rgb(82_82_82)] */}
           <div className="flex flex-row items-center justify-between rounded-b-lg px-4 py-2 md:m-4 md:items-center md:rounded-xl bg-white/90 backdrop-blur-sm drop-shadow-lg">
