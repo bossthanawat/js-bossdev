@@ -82,45 +82,51 @@ const Chat = () => {
     );
   };
 
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [chats]);
+
   return (
     <>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-4 p-4 ">
-          <Scrollbar className="h-80 overflow-y-auto p-2">
-            <div className="flex flex-col gap-2">
-              {chats.map((chat, index) => (
-                <React.Fragment key={index}>
-                  <div className="flex gap-2 items-center">
-                    <Image
-                      src={'/assets/images/notion-avatar-1.png'}
-                      alt="user"
-                      width={50}
-                      height={50}
-                    />
-                    <div className="bg-gray-100 p-3 rounded-r-xl rounded-bl-xl">
-                      <p className="text-sm">{chat.send}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-2 items-center">
-                    <Image
-                      src={'/assets/images/notion-avatar-bot.png'}
-                      alt="bot"
-                      width={50}
-                      height={50}
-                    />
-                    {chat?.isLoading ? (
-                      <BouncingDotsLoader />
-                    ) : (
-                      <div className="bg-orange-100 p-3 rounded-r-xl rounded-bl-xl">
-                        <p className="text-sm">{chat?.result}</p>
+          {chats.length > 0 && (
+            <Scrollbar className="h-80 overflow-y-auto p-2">
+              <div className="flex flex-col gap-2">
+                {chats.map((chat, index) => (
+                  <React.Fragment key={index}>
+                    <div className="flex gap-2 items-center">
+                      <Image
+                        src={'/assets/images/notion-avatar-1.png'}
+                        alt="user"
+                        width={50}
+                        height={50}
+                      />
+                      <div className="bg-gray-100 p-3 rounded-r-xl rounded-bl-xl">
+                        <p className="text-sm">{chat.send}</p>
                       </div>
-                    )}
-                  </div>
-                </React.Fragment>
-              ))}
-              <div ref={endRef}></div>
-            </div>
-          </Scrollbar>
+                    </div>
+                    <div className="flex gap-2 items-center">
+                      <Image
+                        src={'/assets/images/notion-avatar-bot.png'}
+                        alt="bot"
+                        width={50}
+                        height={50}
+                      />
+                      {chat?.isLoading ? (
+                        <BouncingDotsLoader />
+                      ) : (
+                        <div className="bg-orange-100 p-3 rounded-r-xl rounded-bl-xl">
+                          <p className="text-sm">{chat?.result}</p>
+                        </div>
+                      )}
+                    </div>
+                  </React.Fragment>
+                ))}
+                <div ref={endRef}></div>
+              </div>
+            </Scrollbar>
+          )}
           <Controller
             name={'message'}
             control={control}
