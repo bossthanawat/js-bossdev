@@ -90,7 +90,7 @@ const Chat = () => {
     <>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-4 p-4 ">
-          {chats.length > 0 && (
+          {chats.length > 0 ? (
             <Scrollbar className="h-80 overflow-y-auto p-2">
               <div className="flex flex-col gap-2">
                 {chats.map((chat, index) => (
@@ -126,6 +126,20 @@ const Chat = () => {
                 <div ref={endRef}></div>
               </div>
             </Scrollbar>
+          ) : (
+            <>
+              <div className="flex gap-2 items-center">
+                <Image
+                  src={'/assets/images/notion-avatar-bot.png'}
+                  alt="user"
+                  width={50}
+                  height={50}
+                />
+                <div className="bg-gray-100 p-3 rounded-r-xl rounded-bl-xl">
+                  <p className="text-sm">Please ask me something. (づ ◕‿◕ )づ</p>
+                </div>
+              </div>
+            </>
           )}
           <Controller
             name={'message'}
