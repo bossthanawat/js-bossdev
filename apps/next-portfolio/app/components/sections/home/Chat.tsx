@@ -41,6 +41,7 @@ const Chat = () => {
   });
   const { control, handleSubmit, reset } = methods;
   const onSubmit = (data: ValueForm) => {
+    endRef.current?.scrollIntoView({ behavior: 'smooth' });
     const id = uuidv4();
     if (data.message === '') return;
     reset();
@@ -80,10 +81,6 @@ const Chat = () => {
       }
     );
   };
-
-  useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' });
-  });
 
   return (
     <>
