@@ -11,6 +11,9 @@ import { v4 as uuidv4 } from 'uuid';
 import Scrollbar from '../../Scrollbar';
 import BouncingDotsLoader from '../../BouncingDotsLoader';
 
+// import { ChatMessageHistory } from 'langchain/stores/message/in_memory';
+// import { HumanMessage, AIMessage } from '@langchain/core/messages';
+
 type ValueForm = {
   message: string;
 };
@@ -23,13 +26,15 @@ type StateChat = {
 };
 
 const Chat = () => {
+  // const [demoEphemeralChatMessageHistory] = useState(new ChatMessageHistory());
+
   const endRef = useRef<HTMLDivElement>(null);
   const mutateGPT = useMutation({
-    mutationFn: ({ message }: { message: string }) =>
-      axios.get('/api/chat', {
-        params: {
-          message: message,
-        },
+    mutationFn: ({ messages }: { messages: any }) =>
+      axios.post('/api/chat', {
+        messages: messages,
+      }, {
+        timeout: 30*1000,
       }),
   });
 
@@ -40,11 +45,12 @@ const Chat = () => {
     },
   });
   const { control, handleSubmit, reset } = methods;
-  const onSubmit = (data: ValueForm) => {
+  const onSubmit = async (data: ValueForm) => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
     const id = uuidv4();
     if (data.message === '') return;
     reset();
+    const newChat = [...chats, { id, send: data.message, isLoading: true }];
     setChats((prev) => [
       ...prev,
       {
@@ -53,10 +59,18 @@ const Chat = () => {
         isLoading: true,
       },
     ]);
+
+    const getMessages = newChat.map((e) => {
+      return {
+        human: e.send,
+        ai: e.result,
+      };
+    });
+
     mutateGPT.mutate(
-      { message: data.message },
+      { messages: getMessages },
       {
-        onSuccess: ({ data }) => {
+        onSuccess: async ({ data }) => {
           setChats((prev) =>
             prev.map((chat) =>
               chat.id === id
@@ -136,7 +150,9 @@ const Chat = () => {
                   height={50}
                 />
                 <div className="bg-gray-100 p-3 rounded-r-xl rounded-bl-xl">
-                  <p className="text-sm">Please ask me something. (づ ◕‿◕ )づ</p>
+                  <p className="text-sm">
+                    Please ask me something. (づ ◕‿◕ )づ
+                  </p>
                 </div>
               </div>
             </>

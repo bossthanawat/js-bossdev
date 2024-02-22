@@ -2,19 +2,21 @@ import { OpenAI } from 'langchain/llms/openai';
 import { loadQAStuffChain } from 'langchain/chains';
 import { Document } from 'langchain/document';
 import DefaultRetrievalText from '../../lib/DefaultRetrievalText';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
-  const llmA  = new OpenAI({
-    openAIApiKey: process.env.OPENAI_API_KEY,
-  });
-  const chainA = loadQAStuffChain(llmA);
-  const docs = [
-    new Document({ pageContent: DefaultRetrievalText}),
-  ];
-  const resA = await chainA.call({
-    input_documents: docs,
-    question: 'ใช้อะไรเขียน web',
-  });
-  console.log({ resA });
-  return new Response('Hello, from API!');
+export async function GET(request: NextRequest) {
+  try {
+    const llm = new OpenAI({
+      openAIApiKey: process.env.OPENAI_API_KEY,
+    });
+    const chain = loadQAStuffChain(llm);
+    const docs = [new Document({ pageContent: DefaultRetrievalText })];
+    const res = await chain.call({
+      input_documents: docs,
+      question: request?.nextUrl?.searchParams?.get('message') as string,
+    });
+    return NextResponse.json(res);
+  } catch (e) {
+    return NextResponse.json({ error: e }, { status: 500 });
+  }
 }
