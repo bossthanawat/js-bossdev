@@ -62,6 +62,15 @@ Jun 2017 - Oct 2019
 Education
 King Mongkut's Institute of Technology Ladkrabang
 Bachelor's Degree in Computer Engineering Department, majoring in Information Engineering.
-2013 - 2016`;
+2013 - 2016
+
+
+Github: https://github.com/bossthanawat
+linkedin: https://www.linkedin.com/in/thanawat-kittichaikarn-a66a6a195/
+Email: boss41680@gmail.com
+blog: https://medium.com/@boss41680
+
+update ข้อมูลล่าสุดปี 2024
+`;
 
 export default DefaultRetrievalText;
