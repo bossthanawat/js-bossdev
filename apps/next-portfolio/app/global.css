@@ -19,8 +19,8 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 157 84% 40%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 144 60% 30%; /* hsl(144 60% 30%) */
+    --primary-foreground: 210 40% 98%; 
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;

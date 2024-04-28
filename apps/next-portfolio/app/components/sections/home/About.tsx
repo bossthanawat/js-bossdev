@@ -26,6 +26,7 @@ const About = () => {
           <li>TypeScript</li>
           <li>React</li>
           <li>Next.js</li>
+          <li>NestJS</li>
         </div>
 
         <div className="grid md:grid-cols-3 gap-y-2 mt-2 text-gray-700">
@@ -33,6 +34,7 @@ const About = () => {
             <div className="font-medium">Libraries</div>
             <li>React Query</li>
             <li>Apollo GraphQL</li>
+            <li>Langchain.js</li>
             <li>Jest</li>
             <li>Nx</li>
             <li>Framer motion</li>
