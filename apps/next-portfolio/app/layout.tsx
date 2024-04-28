@@ -8,6 +8,8 @@ import { ReactQueryClientProvider } from './components/ReactQueryClientProvider'
 
 // scroll bar
 import 'simplebar-react/dist/simplebar.min.css';
+import { Toaster } from 'sonner';
+import UnderConstruction from './components/UnderConstruction';
 
 export const metadata = {
   title: 'bossthanawat | Home',
@@ -33,6 +35,7 @@ export default function RootLayout({
             fontSans.variable
           )}
         >
+          <UnderConstruction />
           <LayoutNavbar />
           {/* <div
           style={{
@@ -42,7 +45,8 @@ export default function RootLayout({
           className="absolute inset-0 -z-50 max-h-screen"
         /> */}
 
-          {children}
+          <main>{children}</main>
+          <Toaster />
         </body>
       </html>
     </ReactQueryClientProvider>
