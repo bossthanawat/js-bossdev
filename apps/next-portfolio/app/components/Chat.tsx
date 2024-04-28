@@ -15,7 +15,7 @@ export type ValueForm = {
 };
 
 export type ValueChat = {
-  role: UnitType
+  role: UnitType;
   content: string;
   isLoading?: boolean;
 };
@@ -24,7 +24,7 @@ type ChatSectionProps = {
   onSubmit: (data: ValueForm) => void;
   chats: ValueChat[];
   disabledType?: boolean;
-}
+};
 
 const Chat = (props: ChatSectionProps) => {
   const { chats, onSubmit } = props;
@@ -34,9 +34,14 @@ const Chat = (props: ChatSectionProps) => {
     defaultValues: {
       message: '',
     },
-
   });
-  const { control, handleSubmit, reset, setValue, formState: { isDirty } } = methods;
+  const {
+    control,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { isDirty },
+  } = methods;
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -44,10 +49,13 @@ const Chat = (props: ChatSectionProps) => {
 
   const handleSubmitCustom = handleSubmit((data: ValueForm) => {
     onSubmit(data);
-    reset({}, {
-      keepDirty: true
-    });
-  })
+    reset(
+      {},
+      {
+        keepDirty: true,
+      }
+    );
+  });
 
   return (
     <>
@@ -56,35 +64,43 @@ const Chat = (props: ChatSectionProps) => {
           <div className="flex flex-col gap-4 p-4 min-h-[425px] justify-between">
             {chats.length > 0 ? (
               <Scrollbar className="h-80 overflow-y-auto pr-2">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 justify-center">
                   {chats.map((chat, index) => (
                     <React.Fragment key={index}>
-                      {chat?.role === "human" && <div className="flex gap-2 items-start">
-                        <Image
-                          src={'/assets/images/notion-avatar-1.png'}
-                          alt="user"
-                          width={50}
-                          height={50}
-                        />
-                        <div className="bg-gray-100 p-3 rounded-r-xl rounded-bl-xl">
-                          <p className="text-sm">{chat.content}</p>
-                        </div>
-                      </div>}
-                      {chat?.role === "ai" && <div className="flex gap-2 items-start">
-                        <Image
-                          src={'/assets/images/notion-avatar-bot.png'}
-                          alt="bot"
-                          width={50}
-                          height={50}
-                        />
-                        {chat?.isLoading ? (
-                          <BouncingDotsLoader />
-                        ) : (
-                          <div className="bg-orange-100 p-3 rounded-r-xl rounded-bl-xl">
-                            <div className="text-sm"><ReactMarkdown>{chat?.content}</ReactMarkdown></div>
+                      {chat?.role === 'human' && (
+                        <div className="flex gap-2 items-start">
+                          <Image
+                            src={'/assets/images/notion-avatar-1.png'}
+                            alt="user"
+                            width={50}
+                            height={50}
+                          />
+                          <div className="bg-gray-100 p-3 rounded-r-xl rounded-bl-xl">
+                            <p className="text-sm">{chat.content}</p>
                           </div>
-                        )}
-                      </div>}
+                        </div>
+                      )}
+                      {chat?.role === 'ai' && (
+                        <div className="flex gap-2 items-start">
+                          <Image
+                            src={'/assets/images/notion-avatar-bot.png'}
+                            alt="bot"
+                            width={50}
+                            height={50}
+                          />
+                          {chat?.isLoading ? (
+                            <div className="self-center">
+                              <BouncingDotsLoader />
+                            </div>
+                          ) : (
+                            <div className="bg-orange-100 p-3 rounded-r-xl rounded-bl-xl">
+                              <div className="text-sm">
+                                <ReactMarkdown>{chat?.content}</ReactMarkdown>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </React.Fragment>
                   ))}
                   <div ref={endRef}></div>
@@ -108,20 +124,32 @@ const Chat = (props: ChatSectionProps) => {
               </>
             )}
             <div>
-              {!isDirty && <div className='flex gap-2 mb-2'>
-                <Badge
-                  variant="secondary"
-                  className='cursor-pointer'
-                  onClick={() => setValue("message", "What's his name?", { shouldDirty: true })}>
-                  What&apos;s his name?
-                </Badge>
-                <Badge
-                  variant="secondary"
-                  className='cursor-pointer'
-                  onClick={() => setValue("message", "What does he like?", { shouldDirty: true })}>
-                  What does he like?
-                </Badge>
-              </div>}
+              {!isDirty && (
+                <div className="flex gap-2 mb-2">
+                  <Badge
+                    variant="secondary"
+                    className="cursor-pointer"
+                    onClick={() =>
+                      setValue('message', "What's his name?", {
+                        shouldDirty: true,
+                      })
+                    }
+                  >
+                    What&apos;s his name?
+                  </Badge>
+                  <Badge
+                    variant="secondary"
+                    className="cursor-pointer"
+                    onClick={() =>
+                      setValue('message', 'What does he like?', {
+                        shouldDirty: true,
+                      })
+                    }
+                  >
+                    What does he like?
+                  </Badge>
+                </div>
+              )}
               <Controller
                 name={'message'}
                 control={control}
