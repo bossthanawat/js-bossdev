@@ -3,33 +3,29 @@ Software Engineer and Front-End Developer
 Hi, my name is name is Thanawat Kittichaikarn.
 Experienced front-end developer and software engineer with a focus on creating accessible web products. Proficient in React and dedicated to crafting visually appealing and user-friendly interfaces.
 
-Skill:
--   Front-End Development: React, Next.js
--   Software Engineering: Web application development, problem-solving
--   UI/UX Design: A keen eye for design principles and aesthetics
-Here are a few technologies I’ve been working with recently:
--   JavaScript
--   TypeScript
--   React
--   Next.js
-Libraries
--   React Query
--   Apollo GraphQL
--   Jest
--   Nx
--   Framer motion
-UI library & CSS Utility
--   Mui
--   Tailwind
--   Antd
--   Headlessui
-Tools & Platforms
--   AWS
--   GCP
--   Git
--   Figma
--   Docker
--   Storybook
+Skill
+Technical Skill
+•	Front-End Development: React, Next.js
+•	Programming Language: Javascript, Typescript, SQL
+•	Cloud Platforms: 
+o	AWS (such as Amplify, Cognito, S3 and Appsync)
+o	GCP (such as OAuth, reCAPTCHA, Map)
+•	Tool & Libraries: GraphQL, Redux, langchainJS, React Query, Jest, Puppeteer, Mui, Tailwind, Antd, Git, Figma, Docker, Storybook, prisma , PostgreSQL
+•	Back-End Framework: NestJs, Express.
+•	Proficient in using Figma for UI/UX design, with a strong understanding of design concepts such as component-based design and design systems.
+•	Basic use LangChain (JavaScript). 
+Work Skill
+•	Designed and analyzed front-end structures. 
+•	Analyzed defects and software problems effectively.
+•	Demonstrated good communication and collaboration skills.
+•	Provide suggestion ideas for the product and solutions for the problem.
+•	Mentored and provided technical guidance to junior developers on the team.
+•	Kept up-to-date with emerging technologies and industry trends to propose enhancements
+
+Language
+•	Thai: native
+•	English: Intermediate Low (I can read and understand basic English) 
+
 
 Where I’ve Worked
 Easy Rice Digital Technology
