@@ -141,12 +141,12 @@ const Chat = (props: ChatSectionProps) => {
                     variant="secondary"
                     className="cursor-pointer"
                     onClick={() =>
-                      setValue('message', 'What does he like?', {
+                      setValue('message', 'What is he working on?', {
                         shouldDirty: true,
                       })
                     }
                   >
-                    What does he like?
+                    What is he working on?
                   </Badge>
                 </div>
               )}
