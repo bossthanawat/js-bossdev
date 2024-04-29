@@ -5,7 +5,9 @@ export default async function Index() {
   return (
     <>
       <div className="container pt-12">
-        <div className="text-4xl font-semibold text-center">Let&apos;s talk</div>
+        <div className="text-4xl font-semibold text-center">
+          Let&apos;s talk
+        </div>
         <div className="mt-10 grid xs:grid-cols-1 gap-4">
           <div className="text-center flex flex-col gap-2">
             <div className="text-base">Thanawat Kittichaikarn</div>
@@ -13,8 +15,25 @@ export default async function Index() {
             <div className="text-base">096 946 6098</div>
             <div className="text-base">Bangkok, Thailand</div>
           </div>
-          <div className='mt-10'></div>
+          <div className="mt-10"></div>
           <div className="grid xs:grid-cols-1 md:grid-cols-2 gap-4 h-fit max-w-xl w-full mx-auto">
+            <a
+              href={PAGE_PATH.RESUME}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <div className="p-2 flex flex-col gap-2 items-center rounded-lg [box-shadow:0px_4px] border-2 border-gray-900 ">
+                <Image
+                  src="/assets/icons/mdi--resume.svg"
+                  alt="email"
+                  width={24}
+                  height={24}
+                />
+                <div className="flex gap-2 items-center">
+                  <span className="text-lg font-medium">Resume</span>
+                </div>
+              </div>
+            </a>
             <a href="mailto: boss41680@gmail.com">
               <div className="p-2 flex flex-col gap-2 items-center rounded-lg [box-shadow:0px_4px] border-2 border-gray-900 ">
                 <Image
