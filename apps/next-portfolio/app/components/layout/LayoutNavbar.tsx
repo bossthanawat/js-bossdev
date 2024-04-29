@@ -23,6 +23,36 @@ const LayoutNavbar = () => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  const RenderResumeButton = () => {
+    return (
+      <div
+        className={cn('rounded-md border-2 border-slate-900 hover:scale-100')}
+        onClick={() => setOpen(false)}
+      >
+        <LinkTypography
+          styleHighlight="bg-yellow-300"
+          href={PAGE_PATH.CONTACT}
+        >
+          <span className="relative flex items-center justify-center gap-2">
+            Contact
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+            >
+              <path
+                fill="currentColor"
+                d="M6.188 17.288L5.5 16.6L15.58 6.5H6.289v-1h11v11h-1V7.208z"
+              ></path>
+            </svg>
+          </span>
+        </LinkTypography>
+      </div>
+    );
+  };
+
   return (
     <>
       {/* <div className='absolute top-0 w-full h-full'> */}
@@ -50,10 +80,7 @@ const LayoutNavbar = () => {
                   {item.label}
                 </LinkTypography>
               ))}
-              <ContactButton
-                className="ml-3"
-                isCurrentPath={pathname === PAGE_PATH.CONTACT}
-              />
+              <RenderResumeButton />
             </div>
             {/* M  */}
             <button
@@ -109,10 +136,7 @@ const LayoutNavbar = () => {
             {item.label}
           </LinkTypography>
         ))}
-        <ContactButton
-          onClick={() => setOpen(false)}
-          isCurrentPath={pathname === PAGE_PATH.CONTACT}
-        />
+        <RenderResumeButton />
       </div>
       {/* </div> */}
     </>
@@ -153,49 +177,6 @@ const LinkTypography = ({
       ></span>
       <div className="relative">{children}</div>
     </Link>
-  );
-};
-
-type ContactButtonProps = {
-  className?: string;
-  isCurrentPath?: boolean;
-  onClick?: () => void;
-};
-const ContactButton: React.FC<ContactButtonProps> = ({
-  className,
-  isCurrentPath,
-  ...props
-}) => {
-  return (
-    <div
-      className={cn(
-        'rounded-md border-2 border-slate-900 hover:scale-100',
-        className
-      )}
-      {...props}
-    >
-      <LinkTypography
-        href={PAGE_PATH.CONTACT}
-        styleHighlight="bg-yellow-300"
-        isCurrentPath={isCurrentPath}
-      >
-        <span className="relative flex items-center justify-center gap-2">
-          Contact
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="1em"
-            height="1em"
-            viewBox="0 0 24 24"
-            className="h-5 w-5"
-          >
-            <path
-              fill="currentColor"
-              d="M6.188 17.288L5.5 16.6L15.58 6.5H6.289v-1h11v11h-1V7.208z"
-            ></path>
-          </svg>
-        </span>
-      </LinkTypography>
-    </div>
   );
 };
 
