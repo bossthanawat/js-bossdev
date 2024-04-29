@@ -146,7 +146,7 @@ const Chat = (props: ChatSectionProps) => {
                       })
                     }
                   >
-                    What is he working on?
+                    What&apos;s he working on?
                   </Badge>
                 </div>
               )}
