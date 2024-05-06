@@ -16,7 +16,7 @@ const Expertise = () => {
             </div>
           </div>
           <div className="flex flex-col gap-1 text-sm md:text-base">
-            <div className="text-xl font-bold">Frontend React, NextJS</div>
+            <div className="text-xl font-bold">Front-End Developer</div>
             <div>
               A keen eye for design principles and aesthetics and passionate
               about UI/UX.
