@@ -14,37 +14,42 @@ import { ChatGoogleGenerativeAI } from '@langchain/google-genai';
 import { HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 import DefaultRetrievalText from '../../lib/DefaultRetrievalText';
 
-export type UnitType = "human" | "ai"
+export type UnitType = 'human' | 'ai';
 
 type ValueChat = {
-  role: UnitType
+  role: UnitType;
   content: string;
   isLoading?: boolean;
-}
+};
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const messages = body.messages as ValueChat[];
 
-    const chat = new ChatGoogleGenerativeAI({
-      apiKey: process.env.GOOGLE_API_KEY,
-      modelName: 'gemini-pro',
-      maxOutputTokens: 2048,
+    const chat = new ChatOpenAI({
+      modelName: 'gpt-3.5-turbo-1106',
       temperature: 0.4,
-      safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
-        },
-      ],
     });
+
+    // const chat = new ChatGoogleGenerativeAI({
+    //   apiKey: process.env.GOOGLE_API_KEY,
+    //   modelName: 'gemini-pro',
+    //   maxOutputTokens: 2048,
+    //   temperature: 0.4,
+    //   safetySettings: [
+    //     {
+    //       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    //       threshold: HarmBlockThreshold.BLOCK_LOW_AND_ABOVE,
+    //     },
+    //   ],
+    // });
 
     //Prompt Templates
     const questionAnsweringPrompt = ChatPromptTemplate.fromMessages([
       [
         'system',
-        'You are a helpful assistant. I have additional information to context:{context}. You can answer things outside of context. ',
+        'You are a helpful assistant. I have additional information to context:{context}. Please answer briefly and to the point. Only answer things that seem relevant to me. Respond using markdown.',
       ],
       new MessagesPlaceholder('messages'),
     ]);
